@@ -1,0 +1,122 @@
+$scrollbar-color: $accent-darken-3 50%;
+
+* {
+    transition: background 100ms linear, color 100ms linear;
+}
+
+Screen {
+    layers: base notifications;
+    overflow: hidden;
+}
+
+Screen>Container {
+    height: 100%;
+    overflow: hidden;
+}
+
+Body {
+    height: 100%;
+    overflow-y: scroll;
+    width: 100%;
+    background: $surface;
+}
+
+Notification {
+    dock: right;
+    layer: notification;
+    width: auto;
+    margin: 2 4;
+    padding: 1 2;
+    background: $secondary-background;
+    color: $text;
+    height: auto;
+}
+
+Version {
+    color: $text-disabled;
+    dock: bottom;
+    text-align: center;
+    padding: 1;
+}
+
+Sidebar {
+    width: 2fr;
+    background: $panel;
+}
+
+Sidebar:focus-within {
+    offset: 0 0 !important;
+}
+
+Sidebar.-hidden {
+    display: none;
+}
+
+Sidebar Title {
+    background: $boost;
+    color: $secondary;
+    padding: 2 4;
+    border-right: vkey $background;
+    dock: top;
+    text-align: center;
+    text-style: bold;
+}
+
+Sidebar Button {
+    margin: 1 1 1 1;
+    width: 100%;
+    background: $success-darken-3;
+}
+
+Sidebar Button.-hidden {
+    display: none;
+}
+
+DockerLog {
+    background: $surface;
+    color: $text;
+    height: 100vh;
+    width: 10fr;
+    padding: 0 1 1 1;
+}
+
+DockerLog:focus {
+    offset: 0 0 !important;
+}
+
+
+ItemControl {
+    height: auto;
+    width: auto;
+}
+
+Scrollable {
+    border: $background-lighten-3;
+    background: $panel;
+    height: 10;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $scrollbar-color;
+}
+
+Scrollable:focus-within {
+    /* background: white; */
+    border: $primary-lighten-3;
+}
+
+
+ItemControl .item--cursor {
+    background: $success-lighten-3;
+}
+
+ItemControl.-disabled .item--labels {
+    color: $text-disabled;
+}
+
+ItemControl.-disabled .item--cursor {
+    color: $text-disabled;
+    background: $success-darken-3;
+}
+
+ItemControl.-disabled {
+    color: $text-disabled;
+}

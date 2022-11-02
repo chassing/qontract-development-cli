@@ -10,6 +10,7 @@ from .commands import config as config_cmd
 from .commands import env, profile
 from .config import config
 from .utils import console, screenshot
+from .tui.qdapp import QdApp
 
 app = typer.Typer()
 app.add_typer(env.app, name="env", help="Environment related commands.")
@@ -19,8 +20,9 @@ app.add_typer(
 app.add_typer(profile.app, name="profile", help="Profile related commands.")
 
 
-@app.callback(no_args_is_help=True)
+@app.callback(invoke_without_command=True)
 def main(
+    ctx: typer.Context,
     debug: bool = typer.Option(False, help="Enable debug"),
     screen_capture_file: Path = typer.Option(None, writable=True),
 ):
@@ -38,3 +40,6 @@ def main(
         # title = command sub_command
         title = " ".join(args[0:2])
         atexit.register(screenshot, output_file=screen_capture_file, title=title)
+
+    if ctx.invoked_subcommand is None:
+        QdApp(watch_css=True).run()
